@@ -7,8 +7,9 @@ class SubsMailer < ApplicationMailer
   #
   def new_subscriber(subscriber)
     @subscriber = subscriber
+    @event = @subscriber.event
 
-    mail to: "to@example.org",
-         subject: "New subscriber"
+    mail to: @subscriber.email,
+         subject: "You just subscribed to the #{@event.title} "
   end
 end

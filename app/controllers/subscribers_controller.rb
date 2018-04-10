@@ -28,6 +28,7 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
+        SubsMailer.new_subscriber(@subscriber).deliver
         format.html { redirect_to @subscriber, notice: 'Subscriber was successfully created.' }
         format.json { render :show, status: :created, location: @subscriber }
       else
