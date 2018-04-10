@@ -13,8 +13,9 @@
 
   <div class="field">
     <%= form.label :Event_id %>
-    <%= form.text_field :Event_id, id: :subscriber_Event_id %>
+    <%= select_tag "events", options_from_collection_for_select(Event.all, "id", "title") %>
   </div>
+
 
   <div class="field">
     <%= form.label :name %>
