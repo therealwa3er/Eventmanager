@@ -14,7 +14,9 @@ class SubscribersController < ApplicationController
 
   # GET /subscribers/new
   def new
-    @event = Event.find params[:events_id]
+    #puts "Look for me in console\n"
+    #puts params.inspect
+    @event = Event.find(params[:events_id])
     @subscriber = @event.Subscriber.new
   end
 
@@ -25,7 +27,7 @@ class SubscribersController < ApplicationController
   # POST /subscribers
   # POST /subscribers.json
   def create
-    @event = Event.find params[:order_id]
+    @event = Event.find(params[:order_id])
     @subscriber = @event.Subscriber.new order_params
     #@subscriber = Subscriber.new(subscriber_params)
 
@@ -73,6 +75,6 @@ class SubscribersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
-      params.require(:subscriber).permit(:Event_id, :name, :email)
+      params.require(:subscriber).permit(:events_id, :name, :email)
     end
 end
