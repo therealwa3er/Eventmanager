@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409215837) do
+ActiveRecord::Schema.define(version: 20180411195546) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 20180409215837) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "events_id"
     t.index ["Event_id"], name: "index_subscribers_on_Event_id"
+    t.index ["events_id"], name: "index_subscribers_on_events_id"
   end
 
 end

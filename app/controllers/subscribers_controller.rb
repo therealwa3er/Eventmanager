@@ -14,7 +14,8 @@ class SubscribersController < ApplicationController
 
   # GET /subscribers/new
   def new
-    @subscriber = Subscriber.new
+    @event = Event.find params[:events_id]
+    @subscriber = @event.Subscriber.new
   end
 
   # GET /subscribers/1/edit
@@ -24,7 +25,9 @@ class SubscribersController < ApplicationController
   # POST /subscribers
   # POST /subscribers.json
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    @event = Event.find params[:order_id]
+    @subscriber = @event.Subscriber.new order_params
+    #@subscriber = Subscriber.new(subscriber_params)
 
     respond_to do |format|
       if @subscriber.save
