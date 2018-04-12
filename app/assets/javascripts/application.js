@@ -16,3 +16,18 @@
 //= require jquery
 //= require tether
 //= require bootstrap
+
+ $(document).ready(function(){
+
+   $('.destroy').on('click', function(){
+     if(confirm("Are you sure?")){
+       $.ajax({
+         url:'/events/' + this.parentElement.id,
+         type: 'DELETE',
+         success: function(r){
+
+         }
+       });
+     }
+   });
+ });
