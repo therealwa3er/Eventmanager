@@ -1,6 +1,9 @@
 class SubscribersController < ApplicationController
   before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_event
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
   # GET /subscribers
   # GET /subscribers.json
   def index
@@ -10,6 +13,7 @@ class SubscribersController < ApplicationController
   # GET /subscribers/1
   # GET /subscribers/1.json
   def show
+
   end
 
   # GET /subscribers/new
@@ -29,13 +33,13 @@ class SubscribersController < ApplicationController
   # POST /subscribers.json
   def create
     @event = Event.find(params[:event_id])
-    @subscriber = @event.subscribers.new order_params
+    @subscriber = @event.subscribers.new subscriber_params
     #@subscriber = Subscriber.new(subscriber_params)
 
     respond_to do |format|
       if @subscriber.save
         SubsMailer.new_subscriber(@subscriber).deliver
-        format.html { redirect_to @subscriber, notice: 'Subscriber was successfully created.' }
+        format.html { redirect_to [@event, @subscriber], notice: 'Subscriber was successfully created.' }
         format.json { render :show, status: :created, location: @subscriber }
       else
         format.html { render :new }

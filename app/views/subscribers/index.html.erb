@@ -15,12 +15,12 @@
   <tbody>
     <% @subscribers.each do |subscriber| %>
       <tr>
-        <td><%= subscriber.Event %></td>
+        <td><%= subscriber.event.title %></td>
         <td><%= subscriber.name %></td>
         <td><%= subscriber.email %></td>
-        <td><%= link_to 'Show', subscriber %></td>
-        <td><%= link_to 'Edit', edit_subscriber_path(subscriber) %></td>
-        <td><%= link_to 'Destroy', subscriber, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show',  event_subscriber_path(subscriber.event, subscriber) %></td>
+        <td><%= link_to 'Edit', edit_event_subscriber_path(subscriber.event, subscriber) %></td>
+        <td><%= link_to 'Destroy', event_subscriber_path(subscriber.event, subscriber), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Subscriber', new_subscriber_path %>
+<%= link_to 'New Subscriber', new_event_subscriber_path(@event) %>

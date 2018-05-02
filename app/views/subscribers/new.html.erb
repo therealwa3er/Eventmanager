@@ -1,10 +1,7 @@
 <h1>New Subscriber</h1>
 
-<%= simple_form_for @subscriber do |f| %>
-  <%= hidden_field_tag "event_id", @event.id %>
+<%= simple_form_for [@event, @subscriber] do |f| %>
   <%= f.input :name %>
   <%= f.input :email %>
   <%= f.button :submit %>
 <% end %>
-
-<%= link_to 'Back', subscribers_path %>
