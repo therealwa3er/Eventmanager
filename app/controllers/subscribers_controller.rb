@@ -16,8 +16,9 @@ class SubscribersController < ApplicationController
   def new
     #puts "Look for me in console\n"
     #puts params.inspect
-    @event = Event.find(params[:events_id])
-    @subscriber = @event.Subscriber.new
+    puts "Event ids: " + Event.all.map(&:id).inspect
+    @event = Event.find(params[:event_id])
+    @subscriber = @event.subscribers.build
   end
 
   # GET /subscribers/1/edit
@@ -27,8 +28,8 @@ class SubscribersController < ApplicationController
   # POST /subscribers
   # POST /subscribers.json
   def create
-    @event = Event.find(params[:order_id])
-    @subscriber = @event.Subscriber.new order_params
+    @event = Event.find(params[:event_id])
+    @subscriber = @event.subscribers.new order_params
     #@subscriber = Subscriber.new(subscriber_params)
 
     respond_to do |format|
