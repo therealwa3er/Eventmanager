@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Event:
+  = @subscriber.event.title
+p
+  strong
+    | Name:
+  = @subscriber.name
+p
+  strong
+    | Email:
+  = @subscriber.email
+= link_to 'Edit', edit_event_subscriber_path(@subscriber.event, @subscriber)
+|  | 
+= link_to 'Back', event_subscribers_path(@subscriber.event)

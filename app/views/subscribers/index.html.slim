@@ -1,0 +1,32 @@
+p#notice
+  = notice
+h1
+  | Subscribers
+table
+  thead
+    tr
+      th
+        | Event
+      th
+        | Name
+      th
+        | Email
+      th[colspan="3"]
+  tbody
+    - @subscribers.each do |subscriber|
+      tr
+
+      td
+        = subscriber.event.title
+      td
+        = subscriber.name
+      td
+        = subscriber.email
+      td
+        = link_to 'Show',  event_subscriber_path(subscriber.event, subscriber)
+      td
+        = link_to 'Edit', edit_event_subscriber_path(subscriber.event, subscriber)
+      td
+        = link_to 'Destroy', event_subscriber_path(subscriber.event, subscriber), method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Subscriber', new_event_subscriber_path(@event)
