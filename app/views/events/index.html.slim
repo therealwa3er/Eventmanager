@@ -22,11 +22,11 @@ table
         = event.details
       td
       td
-        = link_to 'Show', event
+        = link_to 'Show', event, class: 'btn btn-primary btn-xs'
       td
-        = link_to 'Edit', edit_event_path(event)
+        = link_to 'Edit', edit_event_path(event), class: 'btn btn-info btn-xs'
       td.destroy
         | Destroy
 #event-modal.modal.fade
 br
-= link_to 'New Event', new_event_path
+= link_to 'New Event', new_event_path, class: 'btn btn-success'
