@@ -11,9 +11,9 @@
           = message
   .field
     = form.label :title
-    = form.text_field :title, id: :event_title
+    = form.text_field :title, id: :event_title, class:"form-control"
   .field
     = form.label :details
-    = form.text_area :details, id: :event_details
+    = form.text_area :details, id: :event_details, class:"form-control"
   .actions
     = form.submit
